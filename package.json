@@ -1,0 +1,22 @@
+{
+  "name": "benzy-clubbers-node-express",
+  "version": "1.0.0",
+  "description": "Backend for Comp 584 Final Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benzy-Clubbers/benzy-clubbers-node-express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benzy-Clubbers/benzy-clubbers-node-express/issues"
+  },
+  "homepage": "https://github.com/Benzy-Clubbers/benzy-clubbers-node-express#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
