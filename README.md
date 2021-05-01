@@ -8,5 +8,5 @@
 
 ## Running / Development
 
-* `node app.js`
-* Visit your app at [http://localhost:3000](http://localhost:4200).
+* `nodemon app.js`
+* Visit your app at [http://localhost:3000](http://localhost:3000).
