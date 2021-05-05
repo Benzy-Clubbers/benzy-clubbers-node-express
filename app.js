@@ -8,6 +8,7 @@ const app = express();
 
 const index = require("./routes/ping.routes");
 const carModelRoute = require("./routes/car_model.routes");
+const carTrimRoute = require("./routes/car_trim.routes");
 
 // Express Setup
 app.use(
@@ -28,6 +29,7 @@ app.use(
 // Routes
 app.use(index);
 app.use("/cars/", carModelRoute);
+app.use("/cars/", carTrimRoute);
 
 app.listen(port, () => {
   console.log(`Benzy Clubbers listening at port : ${port}`);
