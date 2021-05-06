@@ -8,15 +8,10 @@ const imageController = require("../controllers/car_image.controller");
 const reviewController = require("../controllers/car_review.controller");
 
 router.get("/models", modelController.listAllModels);
-
 router.get("/model/:id", modelController.findModelById);
-
-router.get("/model/:id/trims", trimController.listTrimsById);
-
-router.get("/model/:id/images", imageController.listImagesById);
-
-router.get("/model/:id/reviews", reviewController.findReviewsById);
-
-router.post("/model/:id", reviewController.postReview);
+router.get("/trims/model/:id", trimController.listTrimsById);
+router.get("/images/model/:id", imageController.listImagesById);
+router.get("/reviews/model/:id", reviewController.findReviewsById);
+router.post("/review/model/:id", reviewController.postReview);
 
 module.exports = router;
