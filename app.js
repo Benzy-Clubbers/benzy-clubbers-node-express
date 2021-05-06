@@ -7,7 +7,7 @@ const port = process.env.PORT;
 const app = express();
 
 const index = require("./routes/ping.routes");
-const carModelRoute = require("./routes/car_model.routes");
+const carRoute = require("./routes/car.routes");
 
 // Express Setup
 app.use(
@@ -27,7 +27,7 @@ app.use(
 
 // Routes
 app.use(index);
-app.use("/cars/", carModelRoute);
+app.use("/cars/", carRoute);
 
 app.listen(port, () => {
   console.log(`Benzy Clubbers listening at port : ${port}`);
