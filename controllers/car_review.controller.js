@@ -4,7 +4,13 @@ exports.findReviewsById = async (req, res) => {
   const modelId = parseInt(req.params.id);
 
   const response = await db.query(
-    "SELECT * FROM car_schema.car_reviews WHERE model_id = $1",
+    "SELECT *," +
+    "CASE WHEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'dd') != '00' THEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'dd \"days ago\"') " +
+    "WHEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'hh24') != '00' THEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'hh24 \"hours ago\"') " +
+    "WHEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'mi') != '00' THEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'mi \"minutes ago\"') " +
+    "ELSE 'Just yet' " +
+    "END as time_formatted " +
+    "FROM car_schema.car_reviews WHERE model_id = $1",
     [modelId]
   );
 
