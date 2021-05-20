@@ -1,5 +1,6 @@
 const db = require("../config/database");
 
+// find model trims by id
 exports.listTrimsById = async (req, res) => {
   const modelId = parseInt(req.params.id);
   const response = await db.query(

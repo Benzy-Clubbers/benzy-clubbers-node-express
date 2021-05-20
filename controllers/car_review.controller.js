@@ -1,8 +1,11 @@
 const db = require("../config/database");
 
+// find review by id
 exports.findReviewsById = async (req, res) => {
   const modelId = parseInt(req.params.id);
 
+  // query will select review by id, but also return
+  // proper timestamp
   const response = await db.query(
     "SELECT *," +
       "CASE WHEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'dd') != '00' THEN to_char(timezone('UTC+7'::text, now()) - timestamp, 'dd \"days ago\"') " +
@@ -17,9 +20,11 @@ exports.findReviewsById = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
+// add new review
 exports.postReview = async (req, res) => {
   const modelId = parseInt(req.params.id);
 
+  // query will insert new review into car_review with values from the body
   await db
     .query(
       "INSERT INTO car_schema.car_reviews (Model_id, Review, Title, Rating, Trim_Name)" +
@@ -37,7 +42,7 @@ exports.postReview = async (req, res) => {
       res.send("Error: " + err.message);
     });
 
-  // update average rating for Model in car_models table
+  // update average rating for Model in car_models table after adding a new review
   await db
     .query(
       "UPDATE car_schema.car_models SET rating = (SELECT ROUND(avg(rating)::numeric,1) " +

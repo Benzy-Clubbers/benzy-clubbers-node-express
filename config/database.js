@@ -1,6 +1,7 @@
 const { Pool } = require("pg");
 require("dotenv").config();
 
+// config the db credentials from env
 const pool = new Pool({
   user: process.env.PG_USER,
   host: process.env.PG_HOST,
@@ -9,6 +10,7 @@ const pool = new Pool({
   port: 5432,
 });
 
+// connect to db
 pool.on("connect", () => {
   console.log("Database Connection Success!");
 });
